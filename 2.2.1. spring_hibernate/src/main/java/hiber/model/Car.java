@@ -17,7 +17,7 @@ public class Car {
     private String model;
 
 
-    @OneToOne
+    @OneToOne(mappedBy = "car")
     private User user;
 
     public void setUser(User user) {

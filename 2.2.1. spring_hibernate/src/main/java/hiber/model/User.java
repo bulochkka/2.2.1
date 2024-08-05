@@ -5,6 +5,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id",referencedColumnName = "id")
+    private Car car;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +33,10 @@ public class User {
 
     public Long getId() {
         return id;
+    }
+
+    public void setCar(Car car){
+        this.car=car;
     }
 
     public void setId(Long id) {
