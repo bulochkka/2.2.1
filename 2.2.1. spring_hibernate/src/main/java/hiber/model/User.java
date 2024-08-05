@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "car_id",referencedColumnName = "id")
+    @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;
 
     @Id
@@ -35,8 +35,8 @@ public class User {
         return id;
     }
 
-    public void setCar(Car car){
-        this.car=car;
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     public void setId(Long id) {
