@@ -15,9 +15,8 @@ public class MainApp {
                 new AnnotationConfigApplicationContext(AppConfig.class);
 
         UserService userService = context.getBean(UserService.class);
-
-        Car car1 = new Car("BMW", 5);
-        Car car2 = new Car("BMW", 8);
+        Car car1 = new Car("car1", 123);
+        Car car2 = new Car("car2", 321);
 
         User user1 = new User("us1", "ln1", "e@mail1.ru");
         User user2 = new User("us2", "ln2", "e@mail2.ru");
@@ -28,24 +27,23 @@ public class MainApp {
         userService.add(user1);
         userService.add(user2);
 
+        userService.add(new User("User1", "Lastname1", "user1@mail.ru"));
+        userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
+        userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
+        userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
+
         List<User> users = userService.listUsers();
         for (User user : users) {
-            System.out.println("Id = " + user.getId());
-            System.out.println("First Name = " + user.getFirstName());
-            System.out.println("Last Name = " + user.getLastName());
-            System.out.println("Email = " + user.getEmail());
+            System.out.println("Id = "+user.getId());
+            System.out.println("First Name = "+user.getFirstName());
+            System.out.println("Last Name = "+user.getLastName());
+            System.out.println("Email = "+user.getEmail());
             System.out.println();
         }
-
         System.out.println("=================");
 
-        User foundUser = userService.searchUserByModel("BMW", 5);
-        if (foundUser != null) {
-            System.out.println("User with car BMW 5 series: " + foundUser.getFirstName() + " " + foundUser.getLastName());
-        } else {
-            System.out.println("No user found with car BMW 5 series");
-        }
 
+        System.out.println(userService.searchUserByModel("car1", 123));
         context.close();
     }
 }
